@@ -7,26 +7,28 @@
 [![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io)
 [![pnpm](https://img.shields.io/badge/pnpm-f69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io)
 
-API de autenticacao enxuta e bem arquitetada, construida com NestJS + Prisma, pensada para servir como base real de login/refresh token em projetos modernos.
+Lean and well-structured authentication API built with NestJS + Prisma, plus a Next.js frontend for the login flow.
 
-- Clean Architecture na pratica
-- JWT com refresh token
-- Validacao com Zod
+- Clean Architecture in practice
+- JWT with refresh token
+- Validation with Zod
 - Prisma + SQLite
-- Testes unitarios e e2e
+- Unit and e2e tests
 
-## Visao geral
+## Overview
 
-Este projeto entrega um fluxo completo de autenticacao:
+This project delivers a complete authentication flow:
 
-- cadastro de usuario
-- login com geracao de auth token e refresh token
-- refresh do auth token
-- endpoint protegido para buscar o usuario logado
+- user signup
+- login with auth token and refresh token
+- auth token refresh
+- protected endpoint to fetch the logged-in user
 
-Tudo isso com separacao clara entre dominio, casos de uso e infra, evitando acoplamento e facilitando evolucao.
+The codebase keeps clear separation between domain, use cases, and infrastructure to avoid tight coupling and ease evolution.
 
 ## Stack
+
+Backend:
 
 - NestJS 11
 - Prisma 7
@@ -34,24 +36,34 @@ Tudo isso com separacao clara entre dominio, casos de uso e infra, evitando acop
 - Zod
 - JWT
 - bcryptjs
-- pnpm
 
-## Estrutura do projeto
+Frontend:
+
+- Next.js 15
+- React 19
+- Tailwind CSS
+- shadcn/ui
+
+## Project structure
 
 ```
 backend/
   src/
-    domain/       # Entidades, validadores e regras de dominio
-    usecases/     # Casos de uso (aplicacao)
-    infra/        # Repositorios, servicos e web (controllers)
-    shared/       # Utilidades e exceptions comuns
+    domain/       # Entities, validators, domain rules
+    usecases/     # Application use cases
+    infra/        # Repositories, services, web (controllers)
+    shared/       # Shared utilities and exceptions
+frontend/
+  src/
+    app/          # Next.js routes
+    components/   # UI components
 ```
 
 ## Endpoints
 
 Base URL: `http://localhost:3000`
 
-### Criar usuario
+### Create user
 
 `POST /users`
 
@@ -100,7 +112,7 @@ Resposta:
 }
 ```
 
-### Buscar usuario logado
+### Fetch logged-in user
 
 `GET /users/me`
 
@@ -110,38 +122,68 @@ Header:
 Authorization: Bearer <authToken>
 ```
 
-## Como rodar
+## How to run
 
-### 1) Instalar dependencias
+### 1) Install dependencies
+
+Backend:
 
 ```bash
+cd backend
 pnpm install
 ```
 
-### 2) Configurar variaveis de ambiente
+Frontend:
 
-Crie um `.env` em `backend/`:
+```bash
+cd frontend
+pnpm install
+```
+
+### 2) Configure environment variables
+
+Create a `.env` in `backend/`:
 
 ```
 DATABASE_URL="file:./dev.db"
-JWT_AUTH_SECRET="sua-chave-auth"
-JWT_REFRESH_SECRET="sua-chave-refresh"
+JWT_AUTH_SECRET="your-auth-secret"
+JWT_REFRESH_SECRET="your-refresh-secret"
 PORT=3000
 ```
 
-### 3) Rodar migrations do Prisma
+### 3) Run Prisma migrations
+
+From `backend/`:
 
 ```bash
 pnpm prisma migrate dev --name init
 ```
 
-### 4) Subir a API
+### 4) Run the API
+
+From `backend/`:
 
 ```bash
 pnpm start:dev
 ```
 
-## Testes
+### 5) Run the frontend
+
+From `frontend/`:
+
+```bash
+pnpm dev
+```
+
+If port 3000 is already taken by the API, run:
+
+```bash
+PORT=3001 pnpm dev
+```
+
+## Tests
+
+From `backend/`:
 
 ```bash
 pnpm test
@@ -150,13 +192,13 @@ pnpm test:e2e
 
 ## Roadmap
 
-- [ ] Frontend
+- [x] Frontend
 - [ ] Dockerfile
 - [ ] CI/CD
-- [ ] Rate limit e protecao contra brute force
+- [ ] Rate limiting and brute force protection
 
-## Autor
+## Author
 
-Feito por Diego Romanio de Almeida
+Made by Diego Romanio de Almeida
 
-Se curtiu, deixa um star no repo.
+If you liked it, consider starring the repo.
