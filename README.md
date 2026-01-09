@@ -7,7 +7,6 @@
 [![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io)
 [![pnpm](https://img.shields.io/badge/pnpm-f69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io)
 
-
 API de autenticacao enxuta e bem arquitetada, construida com NestJS + Prisma, pensada para servir como base real de login/refresh token em projetos modernos.
 
 - Clean Architecture na pratica
@@ -158,7 +157,6 @@ pnpm test:e2e
 
 ## Autor
 
-Feito por Diego Romao
+Feito por Diego Romanio de Almeida
 
 Se curtiu, deixa um star no repo.
-
