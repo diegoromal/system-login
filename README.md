@@ -6,8 +6,12 @@
 [![Zod](https://img.shields.io/badge/Zod-3e67b1?style=for-the-badge&logo=zod&logoColor=white)](https://zod.dev)
 [![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io)
 [![pnpm](https://img.shields.io/badge/pnpm-f69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-20232a?style=for-the-badge&logo=react&logoColor=61dafb)](https://react.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-0f172a?style=for-the-badge&logo=tailwindcss&logoColor=38bdf8)](https://tailwindcss.com)
+[![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-111827?style=for-the-badge&logo=shadcnui&logoColor=white)](https://ui.shadcn.com)
 
-Lean and well-structured authentication API built with NestJS + Prisma, plus a Next.js frontend for the login flow.
+Full-stack authentication system with a clean NestJS API and a Next.js interface for the login flow, designed to be clear, testable, and easy to extend.
 
 - Clean Architecture in practice
 - JWT with refresh token
@@ -17,14 +21,15 @@ Lean and well-structured authentication API built with NestJS + Prisma, plus a N
 
 ## Overview
 
-This project delivers a complete authentication flow:
+This project delivers a complete authentication flow across API and UI:
 
-- user signup
-- login with auth token and refresh token
-- auth token refresh
+- user signup and login
+- auth token and refresh token handling
+- token refresh
 - protected endpoint to fetch the logged-in user
+- frontend screens wired to the API
 
-The codebase keeps clear separation between domain, use cases, and infrastructure to avoid tight coupling and ease evolution.
+The codebase keeps clear separation between domain, use cases, and infrastructure to avoid tight coupling and ease evolution, while the frontend mirrors the same focus on clarity and modular UI.
 
 ## Stack
 
