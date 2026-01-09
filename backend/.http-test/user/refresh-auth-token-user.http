@@ -1,0 +1,15 @@
+###
+POST http://localhost:3000/users/refresh
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMmQyMDQwZC1iOWU3LTQzZWQtYjFlOS1hN2NiYmYyZmJhNjQiLCJpYXQiOjE3Njc3OTQ3OTMsImV4cCI6MTc2ODM5OTU5M30.M0ReDSq1c-Aeyj7QvCfsxP8eW0KKweKxrF-JU5rU_3U"
+}
+
+###
+POST http://localhost:3000/users/refresh
+Content-Type: application/json
+
+{
+    "refreshToken": "invalid-auth-token"
+}

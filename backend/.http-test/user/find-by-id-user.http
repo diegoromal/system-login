@@ -1,0 +1,11 @@
+@authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMmQyMDQwZC1iOWU3LTQzZWQtYjFlOS1hN2NiYmYyZmJhNjQiLCJpYXQiOjE3Njc4NzM4ODIsImV4cCI6MTc2Nzg3NzQ4Mn0.Y-pzW6f0SHYj3EPopJ-zTiV-dhgIvhAgOQo2_xYNAHg
+
+###
+GET http://localhost:3000/users/me
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+GET http://localhost:3000/users/me
+Content-Type: application/json
+Authorization: Bearer invalid-user-id

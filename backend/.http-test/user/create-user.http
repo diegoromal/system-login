@@ -1,0 +1,26 @@
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "john@due.com",
+    "password": "1234567890"
+}
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "erro@senha-invalida.com",
+    "password": "1234"
+}
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "email-invalido",
+    "password": "1234567890"
+}
