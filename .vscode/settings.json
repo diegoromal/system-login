@@ -1,0 +1,43 @@
+{
+    "workbench.statusBar.visible": true,
+    "workbench.editor.showTabs": "single",
+    "workbench.editor.enablePreview": false,
+    "workbench.activityBar.location": "hidden",
+    "prisma.file": "packages/database/prisma/schema.prisma",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "eslint.workingDirectories": [
+        {
+            "mode": "auto"
+        }
+    ],
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma"
+    },
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
+    "cSpell.words": [
+        "caractéres",
+        "coincidem",
+        "Confirmação",
+        "Confirme",
+        "conta",
+        "Conta",
+        "conter",
+        "Criar",
+        "Crie",
+        "deve",
+        "inválido",
+        "menos",
+        "obrigatória",
+        "pelo",
+        "possui",
+        "senha",
+        "Senha",
+        "senhas"
+    ],
+}
