@@ -1,53 +1,28 @@
-import { Label } from "@radix-ui/react-label";
+"use client";
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { Form, FormField } from "../ui/form";
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
+import useFormRegister from "@/hooks/register/useFormRegister";
 
 export function RegisterCard() {
-  const registerFormSchema = z
-    .object({
-      email: z.email("Email inválido"),
-      password: z
-        .string()
-        .min(8, { message: "A senha deve conter pelo menos 8 caractéres" }),
-      confirmPassword: z
-        .string()
-        .min(8, { message: "Confirmação de senha é obrigatória" }),
-    })
-    .refine((data) => {
-      return (
-        data.password === data.confirmPassword,
-        { message: "As senhas não coincidem", path: ["confirmPassword"] }
-      );
-    });
-
-  type RegisterFormType = z.infer<typeof registerFormSchema>;
-
-  const form = useForm<RegisterFormType>({
-    resolver: zodResolver(registerFormSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
-
-  function onRegisterFormSubmit(input: RegisterFormType) {
-    console.log("Form submitted: ", input);
-  }
+  const { form, onSubmit } = useFormRegister();
 
   return (
     <Card className="w-full max-w-sm">
@@ -56,49 +31,86 @@ export function RegisterCard() {
         <CardDescription>Entre com os dados</CardDescription>
         <CardAction>
           <Link href="/">
-            <Button variant="link">Já possui uma Conta?</Button>
+            <Button variant="link">Faça o login!</Button>
           </Link>
         </CardAction>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onRegisterFormSubmit)}>
+          <form onSubmit={onSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <FormField control={form.control} name={"email"} render={({field})} => {
-                  
-                } />
-                <div className="flex items-center">
-                  <Label htmlFor="email">Email</Label>
-                </div>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
+                <FormField
+                  control={form.control}
+                  name={"email"}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel htmlFor="email">Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="john@acme.com"
+                          required
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
               </div>
               <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Senha</Label>
-                </div>
-                <Input id="password" type="password" required />
+                <FormField
+                  control={form.control}
+                  name={"password"}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel htmlFor="password">Senha</FormLabel>
+                      <FormControl>
+                        <Input
+                          id="password"
+                          type="password"
+                          required
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
               <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="confirmPassword">Confirme a Senha</Label>
-                </div>
-                <Input id="confirmPassword" type="password" required />
+                <FormField
+                  control={form.control}
+                  name={"confirmPassword"}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel htmlFor="confirmPassword">
+                        Confirme a Senha
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          id="confirmPassword"
+                          type="password"
+                          required
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
+            </div>
+            <div className="flex-col gap-2 py-8">
+              <Button type="submit" className="w-full">
+                Cadastrar
+              </Button>
             </div>
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
-          Criar
-        </Button>
-      </CardFooter>
     </Card>
   );
 }

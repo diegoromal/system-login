@@ -1,0 +1,62 @@
+"use server";
+
+export type RegisterServiceInput = {
+  email: string;
+  password: string;
+};
+
+export type RegisterServiceOutput = {
+  message: string;
+};
+
+type RequestData = {
+  email: string;
+  password: string;
+};
+
+type ResponseErrorData = {
+  statusCode: number;
+  timestamp: string;
+  message: string;
+};
+
+export async function registerService(
+  input: RegisterServiceInput
+): Promise<RegisterServiceOutput> {
+  const data: RequestData = {
+    email: input.email,
+    password: input.password,
+  };
+
+  const fetchOptions: RequestInit = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+
+  const result = await fetch("http://localhost:3000/users", fetchOptions);
+
+  if (result.ok) {
+    const output: RegisterServiceOutput = {
+      message: "Usuário registrado com sucesso.",
+    };
+
+    return output;
+  }
+
+  if (result.headers.get("Content-Type")?.includes("application/json")) {
+    const { timestamp, message, statusCode }: ResponseErrorData =
+      await result.json();
+    console.error(`${timestamp} - ${statusCode}: ${message}`);
+
+    throw new Error(message);
+  }
+
+  console.error(
+    `Error while registering user: ${result.status} - ${result.statusText}`
+  );
+
+  throw new Error("Um erro inesperado aconteceu. Por favor, tente mais tarde.");
+}

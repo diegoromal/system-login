@@ -21,6 +21,7 @@
         "*.css": "tailwindcss"
     },
     "cSpell.words": [
+        "aconteceu",
         "caractéres",
         "coincidem",
         "Confirmação",
@@ -31,13 +32,19 @@
         "Criar",
         "Crie",
         "deve",
+        "inesperado",
         "inválido",
+        "mais",
         "menos",
         "obrigatória",
         "pelo",
         "possui",
+        "registrado",
         "senha",
         "Senha",
-        "senhas"
+        "senhas",
+        "sucesso",
+        "tente",
+        "Usuário"
     ],
 }

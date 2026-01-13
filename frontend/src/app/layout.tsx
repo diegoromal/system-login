@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({
       >
         <div className="w-screen h-screen flex items-center justify-center bg-foreground/5">
           {children}
+          <Toaster richColors={true} position="top-center" />
         </div>
       </body>
     </html>
