@@ -15,6 +15,7 @@ import { RefreshAuthTokenUserRoute } from './routes/user/refresh-auth-token/refr
 import { FindByIdUserRoute } from './routes/user/find-by-id/find-by-id-user.route';
 import { AuthGuardProvider } from './auth/auth.guard';
 import { ServiceModule } from '../services/service.module';
+import { SituatorEventsRoute } from './routes/situator-events/situator-events.route';
 
 @Module({
   imports: [ServiceModule, UsecaseModule],
@@ -23,6 +24,7 @@ import { ServiceModule } from '../services/service.module';
     LoginUserRoute,
     RefreshAuthTokenUserRoute,
     FindByIdUserRoute,
+    SituatorEventsRoute,
   ],
   providers: [
     AuthGuardProvider,

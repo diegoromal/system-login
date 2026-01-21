@@ -10,7 +10,7 @@ import { z } from "zod";
 
 const registerFormSchema = z
   .object({
-    email: z.email("Email inválido"),
+    email: z.string().email("Email inválido"),
     password: z
       .string()
       .min(8, { message: "A senha deve conter pelo menos 8 caractéres" }),
@@ -18,12 +18,10 @@ const registerFormSchema = z
       .string()
       .min(8, { message: "Confirmação de senha é obrigatória" }),
   })
-  .refine((data) => {
-    return (
-      data.password === data.confirmPassword,
-      { message: "As senhas não coincidem", path: ["confirmPassword"] }
-    );
-  });
+  .refine(
+    (data) => data.password === data.confirmPassword,
+    { message: "As senhas não coincidem", path: ["confirmPassword"] }
+  );
 
 type RegisterFormType = z.infer<typeof registerFormSchema>;
 

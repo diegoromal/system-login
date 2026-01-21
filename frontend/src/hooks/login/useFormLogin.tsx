@@ -4,13 +4,14 @@ import { setAuthTokens } from "@/lib/auth-storage";
 import { loginService } from "@/services/login.service";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Check, CircleX } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
 const loginFormSchema = z.object({
-  email: z.email("Email inválido"),
+  email: z.string().email("Email inválido"),
   password: z.string().min(1, { message: "Senha é obrigatória" }),
 });
 
@@ -22,6 +23,7 @@ export type UseFormLoginType = {
 };
 
 export default function useFormLogin(): UseFormLoginType {
+  const router = useRouter();
   const form = useForm<LoginFormType>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -46,6 +48,8 @@ export default function useFormLogin(): UseFormLoginType {
         description: "Você já pode acessar sua conta.",
         icon: <Check />,
       });
+
+      router.replace("/dashboard");
     } catch (error) {
       const err = error as Error;
 

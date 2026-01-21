@@ -10,7 +10,8 @@ describe('Usecases > User > FindUserUsecase', () => {
     create: jest.fn(),
   };
 
-  const makeSut = () => new FindUserUsecase(userGateway as unknown as UserGateway);
+  const makeSut = () =>
+    new FindUserUsecase(userGateway as unknown as UserGateway);
 
   beforeEach(() => jest.clearAllMocks());
 
